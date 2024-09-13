@@ -31,7 +31,7 @@ const LeaderboardPage = async () => {
   const isPro = !!userSubscription?.isActive;
 
   return (
-    <div className="flex flex-row-reverse gap-[48px] px-6">
+    <div className="flex flex-row-reverse gap-[100px] px-6">
       <StickyWrapper>
         <UserProgress
           activeCourse={userProgress.activeCourse}

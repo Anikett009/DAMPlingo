@@ -6,20 +6,21 @@ import { UserProgress } from "@/components/user-progress";
 import { getUserProgress, getUserSubscription } from "@/db/queries";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { scrapeWordOfTheDay, scrapeDictionaryPage } from "@/utils/scraper";
 import WordOfDayClient from './wordclient';
 import { JSDOM } from 'jsdom';
+
 
 const WordOfTheDayPage = async () => {
   try {
     const userProgressData = getUserProgress();
     const userSubscriptionData = getUserSubscription();
-    const wordOfTheDayData = scrapeWordOfTheDay();
+    const response = await fetch('https://www.merriam-webster.com/word-of-the-day', { next: { revalidate: 86400 } });
+    const merriam = await response.text();
 
-    const [userProgress, userSubscription, scrapedData] = await Promise.all([
+
+    const [userProgress, userSubscription] = await Promise.all([
       userProgressData,
       userSubscriptionData,
-      wordOfTheDayData,
     ]);
 
     if (!userProgress || !userProgress.activeCourse) {
@@ -29,15 +30,11 @@ const WordOfTheDayPage = async () => {
     const isPro = !!userSubscription?.isActive;
 
     let wordData;
-    if (scrapedData && scrapedData.dictionaryLink) {
-      wordData = await scrapeDictionaryPage(scrapedData.dictionaryLink);
-    } else {
-      // Fallback to parsing the original HTML if dictionaryLink is not available
-      wordData = parseWordDataFromHtml(scrapedData?.html);
-    }
+      wordData = parseWordDataFromHtml(merriam);
+
 
     return (
-      <div className="flex flex-row-reverse gap-[48px] px-6">
+      <div className="flex flex-row-reverse gap-[50px] px-6">
         <StickyWrapper>
           <UserProgress
             activeCourse={userProgress.activeCourse}
@@ -53,7 +50,7 @@ const WordOfTheDayPage = async () => {
             <h1 className="text-center font-bold text-neutral-800 text-2xl my-6">
               Word of the Day
             </h1>
-            <p className="text-muted-foreground text-center text-lg mb-6">
+            <p className="text-green-600 font-bold text-center text-xl mb-6">
               Expand your vocabulary with a new word every day!
             </p>
           </div>
@@ -67,7 +64,7 @@ const WordOfTheDayPage = async () => {
   }
 };
 
-// Helper function to parse word data from HTML if dictionary link scraping fails
+// Helper function to parse word data from hmtl file
 function parseWordDataFromHtml(html) {
   if (!html) return null;
   
@@ -79,8 +76,7 @@ function parseWordDataFromHtml(html) {
     pronunciation: doc.querySelector('.word-syllables')?.textContent?.trim() || 'N/A',
     partOfSpeech: doc.querySelector('.main-attr')?.textContent?.trim() || 'N/A',
     definition: doc.querySelector('.wod-definition-container p')?.textContent?.trim() || 'N/A',
-    example: doc.querySelector('.wod-example-sentences p')?.textContent?.trim() || 'N/A',
+    example: doc.querySelector('.wod-definition-container p:nth-child(3)')?.textContent?.trim().slice(2).trim() || 'Example not available',
   };
 }
-
 export default WordOfTheDayPage;
