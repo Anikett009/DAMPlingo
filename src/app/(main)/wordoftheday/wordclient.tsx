@@ -8,7 +8,21 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 
-const WordOfDayClient = ({ wordData }) => {
+// Define the WordData interface
+interface WordData {
+  word: string | null;
+  pronunciation: string | null;
+  partOfSpeech: string | null;
+  definition: string | null;
+  example: string | null;
+}
+
+// Define props interface for WordOfDayClient
+interface WordOfDayClientProps {
+  wordData: WordData | null;
+}
+
+const WordOfDayClient: React.FC<WordOfDayClientProps> = ({ wordData }) => {
   if (!wordData) {
     return (
       <Card className="w-full">

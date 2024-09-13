@@ -17,6 +17,10 @@ interface WordData {
   example: string;
 }
 
+interface WordOfDayClientProps {
+  wordData: WordData | null;
+}
+
 
 const WordOfTheDayPage = async () => {
   try {
