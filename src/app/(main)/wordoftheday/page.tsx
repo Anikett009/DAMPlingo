@@ -9,6 +9,14 @@ import { redirect } from "next/navigation";
 import WordOfDayClient from './wordclient';
 import { JSDOM } from 'jsdom';
 
+interface WordData {
+  word: string;
+  pronunciation: string;
+  partOfSpeech: string;
+  definition: string;
+  example: string;
+}
+
 
 const WordOfTheDayPage = async () => {
   try {
@@ -29,8 +37,8 @@ const WordOfTheDayPage = async () => {
 
     const isPro = !!userSubscription?.isActive;
 
-    let wordData;
-      wordData = parseWordDataFromHtml(merriam);
+    let wordData: WordData | null;
+    wordData = parseWordDataFromHtml(merriam);
 
 
     return (
@@ -65,7 +73,7 @@ const WordOfTheDayPage = async () => {
 };
 
 // Helper function to parse word data from hmtl file
-function parseWordDataFromHtml(html) {
+function parseWordDataFromHtml(html: string): WordData | null {
   if (!html) return null;
   
   const dom = new JSDOM(html);
