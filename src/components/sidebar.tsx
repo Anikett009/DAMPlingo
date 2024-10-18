@@ -40,6 +40,8 @@ export const Sidebar = ({ className }: Props) => {
         />
         <SidebarItem label={"shop"} iconSrc={"/shop.svg"} href={"/shop"} />
         <SidebarItem label = {"word of the day"} iconSrc={"/word.svg"} href={"/wordoftheday"}/>
+        <div className="w-20"></div>
+        <SidebarItem label = {"Contact Us"} iconSrc={"/team.svg"} href={"/contact"}/>
       </div>
       <div className="p-4">
         <ClerkLoading>
