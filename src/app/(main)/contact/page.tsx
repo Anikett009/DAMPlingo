@@ -1,9 +1,67 @@
 import React from 'react';
 import Image from 'next/image';
 import { FeedWrapper } from '@/components/feed-wrapper';
-import { FaTwitter, FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaEnvelope } from 'react-icons/fa6';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa6';
 import Link from 'next/link';
-import { profileDetails, ProfileDetail } from '@/lib/team';
+
+interface ProfileDetail {
+  username: string;
+  fullName: string;
+  bio: string;
+  github: string;
+  twitter: string;
+  facebook: string;
+  instagram: string;
+  background: string;
+  image: string;
+}
+
+const profileDetails: ProfileDetail[] = [
+  {
+    username: 'Juaari',
+    fullName: 'Aniket Pethe',
+    bio: 'Passionate developer ',
+    github: 'https://www.github.com/',
+    twitter: 'https://twitter.com/',
+    facebook: 'https://www.facebook.com/',
+    instagram: 'https://instagram.com/',
+    background: '/aniket.jpeg',
+    image: '/aniket.jpeg',
+  },
+  {
+    username: 'Juaari',
+    fullName: 'Devika Nikam',
+    bio: 'Always in pursuit of the next coding adventure.',
+    github: 'https://www.github.com/',
+    twitter: 'https://twitter.com/',
+    facebook: 'https://www.facebook.com/',
+    instagram: 'https://instagram.com/',
+    background: '/assets/images/bg-2.jpg',
+    image: '/devika.jpg',
+  },
+  {
+    username: 'Juaari',
+    fullName: 'Pushkar Mhatre',
+    bio: 'Enthusiastic about all things tech.',
+    github: 'https://www.github.com/',
+    twitter: 'https://twitter.com/',
+    facebook: 'https://www.facebook.com/',
+    instagram: 'https://instagram.com/',
+    image: '/pushkar.jpeg',
+    background: '/pushkar.jpeg',
+  },
+  {
+    username: 'Juaari',
+    fullName: 'Mahek Parmar',
+    bio: 'Magician of coding',
+    github: 'https://www.github.com/',
+    twitter: 'https://twitter.com/',
+    facebook: 'https://www.facebook.com/',
+    instagram: 'https://instagram.com/',
+    background: '/assets/images/bg-4.jpg',
+    image: '/mahek.jpeg',
+  },
+];
 
 const Team2: React.FC = () => {
   return (
@@ -24,8 +82,7 @@ const Team2: React.FC = () => {
         <div className="py-20 ">
           <div className="container mx-auto">
             <div className="grid gap-6 w-full px-10 mt-10 md:grid-cols-2 xl:grid-cols-4">
-              {/* Cards */}
-              {profileDetails.slice(0, 4).map((details: ProfileDetail, index: number) => (
+              {profileDetails.map((details: ProfileDetail, index: number) => (
                 <div
                   className="flex flex-col justify-center px-8 mx-6 my-12 text-center rounded-md shadow-md bg-white text-gray-800 hover:scale-105"
                   key={index}
@@ -48,7 +105,6 @@ const Team2: React.FC = () => {
                     >
                       <FaGithub />
                     </Link>
-                   
                     <Link
                       href={details.twitter}
                       className="bg-sky-500 flex items-center justify-center shadow rounded-full h-8 w-8 text-white"
