@@ -129,10 +129,10 @@ const ProfileCard: React.FC<{ details: ProfileDetail }> = ({ details }) => {
             <Link href={details.github} className="text-2xl text-black">
               <FaGithub />
             </Link>
-            <Link href={details.twitter} className="text-2xl text-sky-500">
+            <Link href={details.linkedin} className="text-2xl text-sky-500">
               <FaLinkedin />
             </Link>
-            <Link href={details.instagram} className="text-2xl text-pink-500">
+            <Link href={details.twitter} className="text-2xl text-pink-500">
               <FaEnvelope />
             </Link>
           </div>
