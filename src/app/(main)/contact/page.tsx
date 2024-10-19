@@ -33,7 +33,7 @@ const profileDetails: ProfileDetail[] = [
     linkedin: 'https://www.linkedin.com/',
     twitter: '',
     background: '/aniket.png',
-    image: '/aniket.jpeg',
+    image: '/aniket.png',
   },
   {
     username: 'Front-End & UIUX',
