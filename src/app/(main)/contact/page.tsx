@@ -46,7 +46,7 @@ const profileDetails: ProfileDetail[] = [
     facebook: 'https://www.facebook.com/',
     instagram: 'https://instagram.com/',
     background: '/assets/images/bg-2.jpg',
-    image: '/devika.jpg',
+    image: '/devika.png',
   },
   {
     username: 'Front-End & Data Engineer',
