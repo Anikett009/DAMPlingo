@@ -32,7 +32,7 @@ const profileDetails: ProfileDetail[] = [
     github: 'https://www.github.com/',
     linkedin: 'https://www.linkedin.com/',
     twitter: '',
-    background: '/aniket.jpeg',
+    background: '/aniket.png',
     image: '/aniket.jpeg',
   },
   {
@@ -73,20 +73,21 @@ const ProfileCard: React.FC<{ details: ProfileDetail }> = ({ details }) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <div className="flex flex-col justify-center px-8 mx-auto my-12 text-center rounded-md shadow-md bg-white text-gray-800 hover:scale-105 w-full max-w-sm cursor-pointer">
-          <div className="w-full aspect-square relative -mt-12 mb-4">
+      <div className="flex flex-col justify-center px-4 sm:px-6 md:px-8 mx-auto my-12 text-center rounded-md shadow-md bg-white text-gray-800 hover:scale-105 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl cursor-pointer transition-all duration-300">
+          <div className="w-full aspect-square relative -mt-12 mb-4 ">
             <Image
               src={details.image}
               alt={details.fullName}
               layout="fill"
               objectFit="cover"
-              className="rounded-full"
+              className="rounded-full border-4 border-sky-100"
+
             />
           </div>
           <div className="flex-1 my-4">
-            <p className="text-3xl font-bold">{details.fullName}</p>
-            <h3 className="text-xl font-semibold">{details.username}</h3>
-            <h3 className="text-xl">{details.bio}</h3>
+            <p className="text-2xl font-bold">{details.fullName}</p>
+            <h3 className="text-lg font-semibold">{details.username}</h3>
+            <h3 className="text-lg">{details.bio}</h3>
           </div>
           <div className="flex items-center justify-center p-3 space-x-3 border-t-2">
             <Link
