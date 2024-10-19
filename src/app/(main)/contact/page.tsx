@@ -19,8 +19,7 @@ interface ProfileDetail {
   bio: string;
   github: string;
   twitter: string;
-  facebook: string;
-  instagram: string;
+  linkedin: string;
   background: string;
   image: string;
 }
@@ -31,9 +30,8 @@ const profileDetails: ProfileDetail[] = [
     fullName: 'Aniket Pethe',
     bio: 'Passionate developer ',
     github: 'https://www.github.com/',
-    twitter: 'https://twitter.com/',
-    facebook: 'https://www.facebook.com/',
-    instagram: 'https://instagram.com/',
+    linkedin: 'https://www.linkedin.com/',
+    twitter: '',
     background: '/aniket.jpeg',
     image: '/aniket.jpeg',
   },
@@ -42,9 +40,9 @@ const profileDetails: ProfileDetail[] = [
     fullName: 'Devika Nikam',
     bio: 'Always in pursuit of the next coding adventure.',
     github: 'https://www.github.com/',
-    twitter: 'https://twitter.com/',
-    facebook: 'https://www.facebook.com/',
-    instagram: 'https://instagram.com/',
+    twitter: '',
+    
+    linkedin: 'https://www.linkedin.com/',
     background: '/assets/images/bg-2.jpg',
     image: '/devika.png',
   },
@@ -53,9 +51,8 @@ const profileDetails: ProfileDetail[] = [
     fullName: 'Pushkar Mhatre',
     bio: 'Enthusiastic about all things tech.',
     github: 'https://www.github.com/',
-    twitter: 'https://twitter.com/',
-    facebook: 'https://www.facebook.com/',
-    instagram: 'https://instagram.com/',
+    twitter: '',
+    linkedin: 'https://www.linkedin.com/feed/',
     image: '/pushkar.jpeg',
     background: '/pushkar.jpeg',
   },
@@ -64,9 +61,9 @@ const profileDetails: ProfileDetail[] = [
     fullName: 'Mahek Parmar',
     bio: 'Magician of coding',
     github: 'https://www.github.com/',
-    twitter: 'https://twitter.com/',
-    facebook: 'https://www.facebook.com/',
-    instagram: 'https://instagram.com/',
+    twitter: '',
+    
+    linkedin: 'https://www.linkedin.com/',
     background: '/assets/images/bg-4.jpg',
     image: '/mahek.jpeg',
   },
@@ -99,13 +96,13 @@ const ProfileCard: React.FC<{ details: ProfileDetail }> = ({ details }) => {
               <FaGithub />
             </Link>
             <Link
-              href={details.twitter}
+              href={details.linkedin}
               className="bg-sky-500 flex items-center justify-center shadow rounded-full h-8 w-8 text-white"
             >
               <FaLinkedin />
             </Link>
             <Link
-              href={details.instagram}
+              href={details.twitter}
               className="bg-pink-500 flex items-center justify-center shadow rounded-full h-8 w-8 text-white"
             >
               <FaEnvelope />
