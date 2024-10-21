@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Analytics } from "@vercel/analytics/react"
 
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
@@ -26,7 +27,7 @@ export default function RootLayout({
       
       <html lang="en">
         <body className={font.className}>
-          
+          <Analytics />
           <Toaster />
           <ExitModal />
           <HeartsModal />
