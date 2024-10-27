@@ -1,3 +1,4 @@
+// Import required modules and dependencies at the top
 import React from 'react';
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { Promo } from "@/components/promo";
@@ -17,33 +18,22 @@ interface WordData {
   example: string;
 }
 
-interface WordOfDayClientProps {
-  wordData: WordData | null;
-}
-
-
 const WordOfTheDayPage = async () => {
   try {
-    const userProgressData = getUserProgress();
-    const userSubscriptionData = getUserSubscription();
-    const response = await fetch('https://www.merriam-webster.com/word-of-the-day', { next: { revalidate: 86400 } });
-    const merriam = await response.text();
-
-
     const [userProgress, userSubscription] = await Promise.all([
-      userProgressData,
-      userSubscriptionData,
+      getUserProgress(),
+      getUserSubscription(),
     ]);
 
     if (!userProgress || !userProgress.activeCourse) {
       redirect("/courses");
     }
 
+    const response = await fetch('https://www.merriam-webster.com/word-of-the-day', { next: { revalidate: 86400 } });
+    const merriamHtml = await response.text();
+    const wordData = parseWordDataFromHtml(merriamHtml);
+
     const isPro = !!userSubscription?.isActive;
-
-    let wordData: WordData | null;
-    wordData = parseWordDataFromHtml(merriam);
-
 
     return (
       <div className="flex flex-row-reverse gap-[50px] px-6">
@@ -76,7 +66,7 @@ const WordOfTheDayPage = async () => {
   }
 };
 
-// Helper function to parse word data from hmtl file
+// Helper function to parse word data from HTML
 function parseWordDataFromHtml(html: string): WordData | null {
   if (!html) return null;
   
@@ -91,4 +81,5 @@ function parseWordDataFromHtml(html: string): WordData | null {
     example: doc.querySelector('.wod-definition-container p:nth-child(3)')?.textContent?.trim().slice(2).trim() || 'Example not available',
   };
 }
+
 export default WordOfTheDayPage;
