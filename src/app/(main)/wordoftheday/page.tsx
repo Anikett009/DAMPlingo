@@ -29,7 +29,8 @@ const WordOfTheDayPage = async () => {
       redirect("/courses");
     }
 
-    const response = await fetch('https://www.merriam-webster.com/word-of-the-day', { next: { revalidate: 86400 } });
+    // Fetch word of the day with no cache
+    const response = await fetch('https://www.merriam-webster.com/word-of-the-day', { cache: 'no-store' });
     const merriamHtml = await response.text();
     const wordData = parseWordDataFromHtml(merriamHtml);
 
