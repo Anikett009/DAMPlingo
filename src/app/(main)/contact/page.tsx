@@ -18,7 +18,7 @@ interface ProfileDetail {
   fullName: string;
   bio: string;
   github: string;
-  twitter: string;
+  mail: string;
   linkedin: string;
   background: string;
   image: string;
@@ -29,9 +29,9 @@ const profileDetails: ProfileDetail[] = [
     username: 'Full-Stack Developer',
     fullName: 'Aniket Pethe',
     bio: 'Passionate developer ',
-    github: 'https://www.github.com/',
-    linkedin: 'https://www.linkedin.com/',
-    twitter: '',
+    github: 'https://github.com/Anikett009',
+    linkedin: 'https://www.linkedin.com/in/aniket-pethe-83122229b/',
+    mail: '',
     background: '/aniket.png',
     image: '/aniket.png',
   },
@@ -39,20 +39,20 @@ const profileDetails: ProfileDetail[] = [
     username: 'Front-End & UIUX',
     fullName: 'Devika Nikam',
     bio: 'Always in pursuit of the next coding adventure.',
-    github: 'https://www.github.com/',
-    twitter: '',
+    github: 'https://github.com/devikanics',
+    mail: '',
     
-    linkedin: 'https://www.linkedin.com/',
+    linkedin: 'https://www.linkedin.com/in/devika-nikam-21580b207/',
     background: '/assets/images/bg-2.jpg',
     image: '/devika.png',
   },
   {
-    username: 'Front-End & Data Engineer',
+    username: 'Front-End & UIUX',
     fullName: 'Pushkar Mhatre',
     bio: 'Enthusiastic about all things tech.',
-    github: 'https://www.github.com/',
-    twitter: '',
-    linkedin: 'https://www.linkedin.com/feed/',
+    github: 'https://github.com/push4007',
+    mail: '',
+    linkedin: 'https://www.linkedin.com/in/pushkarmhatre/',
     image: '/pushkar.jpeg',
     background: '/pushkar.jpeg',
   },
@@ -60,10 +60,9 @@ const profileDetails: ProfileDetail[] = [
     username: 'BackEnd & DevOps',
     fullName: 'Mahek Parmar',
     bio: 'Magician of coding',
-    github: 'https://www.github.com/',
-    twitter: '',
-    
-    linkedin: 'https://www.linkedin.com/',
+    github: 'https://github.com/mahekpar',
+    mail: '',
+    linkedin: 'https://www.linkedin.com/in/mahek-parmar/',
     background: '/assets/images/bg-4.jpg',
     image: '/mahek.jpeg',
   },
@@ -103,7 +102,7 @@ const ProfileCard: React.FC<{ details: ProfileDetail }> = ({ details }) => {
               <FaLinkedin />
             </Link>
             <Link
-              href={details.twitter}
+              href={details.mail}
               className="bg-pink-500 flex items-center justify-center shadow rounded-full h-8 w-8 text-white"
             >
               <FaEnvelope />
@@ -132,7 +131,7 @@ const ProfileCard: React.FC<{ details: ProfileDetail }> = ({ details }) => {
             <Link href={details.linkedin} className="text-2xl text-sky-500">
               <FaLinkedin />
             </Link>
-            <Link href={details.twitter} className="text-2xl text-pink-500">
+            <Link href={details.mail} className="text-2xl text-pink-500">
               <FaEnvelope />
             </Link>
           </div>
@@ -156,7 +155,7 @@ const Team2: React.FC = () => {
          About Us
         </h1>
         <p className="text-muted-foreground text-center text-xl mb-6">
-          Meet the revolutionary team behind Damplingo
+          Meet the revolutionary team behind Lang.ai
         </p>
         <div className="py-20 w-full">
           <div className="container mx-auto">

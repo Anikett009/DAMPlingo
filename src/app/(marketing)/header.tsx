@@ -17,7 +17,7 @@ export const Header = () => {
         <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3">
           
           <h1 className="text-2xl font-extrabold text-green-600 tracking-wide">
-            DAMPlingo
+            Lang.ai
           </h1>
         </div>
 

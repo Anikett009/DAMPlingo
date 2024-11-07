@@ -32,14 +32,14 @@ export const createStripeUrl = async () => {
     customer_email: user.emailAddresses[0].emailAddress,
     line_items: [
       {
-        quantity: 1,
+        quantity: 10,
         price_data: {
           currency: "INR",
           product_data: {
-            name: "DAMPlingo Pro",
+            name: " Pro",
             description: "Unlimited Hearts",
           },
-          unit_amount: 1,
+          unit_amount: 30,
           recurring: { interval: "month" },
         },
       },

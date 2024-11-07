@@ -53,7 +53,7 @@ const WordOfTheDayPage = async () => {
             <h1 className="text-center font-bold text-neutral-800 text-2xl my-6">
               Word of the Day
             </h1>
-            <p className="text-green-600 font-bold text-center text-xl mb-6">
+            <p className="text-muted-foreground text-center text-lg mb-6">
               Expand your vocabulary with a new word every day!
             </p>
           </div>
