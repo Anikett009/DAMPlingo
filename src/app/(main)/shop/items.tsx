@@ -7,6 +7,7 @@ import { POINTS_TO_REFILL } from "@/constants";
 import Image from "next/image";
 import { useTransition } from "react";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 type Props = {
   hearts: number;
@@ -27,7 +28,7 @@ export const Items = ({ hasActiveSubscription, hearts, points }: Props) => {
     });
   };
 
-  const onUpgrade = () => {
+  const handleSubscription = () => {
     startTransition(() => {
       createStripeUrl()
         .then((response) => {
@@ -35,7 +36,9 @@ export const Items = ({ hasActiveSubscription, hearts, points }: Props) => {
             window.location.href = response.data;
           }
         })
-        .catch(() => toast.error("Something went wrong"));
+        .catch((error) => {
+          toast.error(error.message || "Something went wrong");
+        });
     });
   };
 
@@ -69,8 +72,16 @@ export const Items = ({ hasActiveSubscription, hearts, points }: Props) => {
             Unlimited hearts
           </p>
         </div>
-        <Button onClick={onUpgrade} disabled={pending}>
-          {hasActiveSubscription ? "settings" : "upgrade"}
+        <Button 
+          onClick={handleSubscription}
+          disabled={pending}
+          className="min-w-[100px]"
+        >
+          {pending ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            hasActiveSubscription ? "settings" : "upgrade"
+          )}
         </Button>
       </div>
     </ul>
